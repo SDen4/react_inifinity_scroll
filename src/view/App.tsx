@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Header } from 'components/Header';
 import { Result } from 'components/Result';
-import { Button } from 'components/ui/Button';
+import { Search } from 'components/Search';
 
 import { getInitDataSaga } from 'store/main/actions';
-import { reset, rndData } from 'store/main/reducers';
+import { reset } from 'store/main/reducers';
 
 import { initDataSelect, loadingSelect } from 'selectors/main';
 
@@ -26,22 +26,12 @@ export const App: FC = () => {
     };
   }, [dispatch]);
 
-  const onButtonClick = () => {
-    const randomNum = Math.random();
-    dispatch(rndData(randomNum));
-  };
-
   return (
     <main className={styles.main}>
       <Header />
 
       <section className={styles.section}>
-        <Button
-          type="button"
-          text="Find"
-          title="Find repos on GitHub by username"
-          onClick={onButtonClick}
-        />
+        <Search />
       </section>
 
       <section className={styles.section}>
