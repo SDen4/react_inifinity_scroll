@@ -21,13 +21,3 @@
 .section:last-child {
   margin-bottom: 0;
 }
-
-.section img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-}
-
-.section p {
-  color: #fff;
-}

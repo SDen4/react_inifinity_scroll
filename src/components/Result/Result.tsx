@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 
-import { usersListSelect } from 'selectors/main';
+import { Card } from 'components/Card';
 
-// import styles from './styles.css';
+import { usersListSelect } from 'selectors/main';
 
 export const Result: FC = () => {
   const usersList = useSelector(usersListSelect);
@@ -11,11 +11,11 @@ export const Result: FC = () => {
   return (
     <>
       {usersList?.length ? (
-        <ul>
-          {usersList.map((el) => {
-            return <p key={el.id}>{el.login}</p>;
-          })}
-        </ul>
+        <div>
+          {usersList.map((el) => (
+            <Card card={el} key={el.id} />
+          ))}
+        </div>
       ) : (
         <p>No data to dispay...</p>
       )}
