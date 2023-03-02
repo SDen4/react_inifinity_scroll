@@ -1,8 +1,9 @@
-import React, { FC, lazy, Suspense, useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Header } from 'components/Header';
 import { Result } from 'components/Result';
+import { Button } from 'components/ui/Button';
 
 import { getInitDataSaga } from 'store/main/actions';
 import { reset, rndData } from 'store/main/reducers';
@@ -10,8 +11,6 @@ import { reset, rndData } from 'store/main/reducers';
 import { initDataSelect, loadingSelect } from 'selectors/main';
 
 import styles from './styles.css';
-// only for example of lazy import ;-)
-const LazyButton = lazy(() => import('components/ui/Button'));
 
 export const App: FC = () => {
   const dispatch = useDispatch();
@@ -35,18 +34,14 @@ export const App: FC = () => {
   return (
     <main className={styles.main}>
       <Header />
+
       <section className={styles.section}>
-        <Suspense fallback={<p>Loading...</p>}>
-          <LazyButton
-            type="button"
-            text="Button text"
-            title="Default hint text"
-            onClick={onButtonClick}
-            style={{ backgroundColor: 'red' }}
-            hidden={false}
-            accessKey="c"
-          />
-        </Suspense>
+        <Button
+          type="button"
+          text="Find"
+          title="Find repos on GitHub by username"
+          onClick={onButtonClick}
+        />
       </section>
 
       <section className={styles.section}>

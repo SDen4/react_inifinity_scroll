@@ -5,9 +5,7 @@ import styles from './styles.css';
 export const Header: FC = () => {
   return (
     <header>
-      <h1 className={styles.appHeader}>
-        Typescript - CSS - React - Redux-saga - Redux-toolkit - Jest
-      </h1>
+      <h1 className={styles.appHeader}>React Infinity Scroll Example</h1>
     </header>
   );
 };
