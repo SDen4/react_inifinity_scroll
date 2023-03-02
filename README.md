@@ -1,4 +1,4 @@
-# React App Template
+# React Infinity Scroll Example
 
 ---
 
@@ -13,7 +13,7 @@
 
 ---
 
-[Demo](https://sden4.github.io/template/)
+[Demo](https://sden4.github.io/react_inifinity_scroll/)
 
 ---
 
