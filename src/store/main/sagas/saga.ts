@@ -1,20 +1,20 @@
 import { SagaIterator } from 'redux-saga';
 import { put, takeEvery } from 'redux-saga/effects';
 
-import { getInitDataSaga } from '../actions';
+import { searchUsersSaga } from '../actions';
 
-import { initData, loading } from '../reducers';
+import { loading, usersList } from '../reducers';
 
 import { httpRequest } from 'api/httpRequest';
 
-function* getInitData() {
+import { AllDataType } from 'model/types';
+
+function* searchUsers({ payload }: ReturnType<typeof searchUsersSaga>) {
   yield put(loading(true));
   try {
-    const randomUser: string = yield `a${(Math.random() * 10).toFixed()}`;
+    const allData: AllDataType = yield httpRequest(payload);
 
-    const { avatar_url } = yield httpRequest(`users/${randomUser}`);
-
-    yield put(initData(avatar_url));
+    yield put(usersList(allData?.items));
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);
@@ -24,5 +24,5 @@ function* getInitData() {
 }
 
 export function* rootSearchSaga(): SagaIterator {
-  [yield takeEvery(getInitDataSaga, getInitData)];
+  [yield takeEvery(searchUsersSaga, searchUsers)];
 }

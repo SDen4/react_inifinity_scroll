@@ -1,13 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { ItemType } from 'model/types';
+
 export interface IInitialState {
-  initData: string;
+  usersList: ItemType[];
   rndData: number | null;
   loading: boolean;
 }
 
 const initialState = {
-  initData: '',
+  usersList: [],
   rndData: null,
   loading: false,
 } as IInitialState;
@@ -16,8 +18,8 @@ const mainReducer = createSlice({
   name: 'MReducer',
   initialState,
   reducers: {
-    initData(state, action: PayloadAction<string>) {
-      return { ...state, initData: action.payload };
+    usersList(state, action: PayloadAction<ItemType[]>) {
+      return { ...state, usersList: action.payload };
     },
     rndData(state, action: PayloadAction<number>) {
       return { ...state, rndData: action.payload };
@@ -31,5 +33,5 @@ const mainReducer = createSlice({
   },
 });
 
-export const { initData, rndData, loading, reset } = mainReducer.actions;
+export const { usersList, rndData, loading, reset } = mainReducer.actions;
 export default mainReducer.reducer;

@@ -1,23 +1,24 @@
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 
-import { Flex } from 'components/ui/Flex';
+import { usersListSelect } from 'selectors/main';
 
-import { rndDataSelect } from 'selectors/main';
-
-import styles from './styles.css';
+// import styles from './styles.css';
 
 export const Result: FC = () => {
-  const rndData = useSelector(rndDataSelect);
+  const usersList = useSelector(usersListSelect);
 
   return (
-    <Flex
-      className={`${styles.span} ${
-        (rndData as number) > 0.5 ? styles.redText : ''
-      }`}
-    >
-      <span>Random number from the store:&nbsp;</span>
-      <span>{rndData}</span>
-    </Flex>
+    <>
+      {usersList?.length ? (
+        <ul>
+          {usersList.map((el) => {
+            return <p key={el.id}>{el.login}</p>;
+          })}
+        </ul>
+      ) : (
+        <p>No data to dispay...</p>
+      )}
+    </>
   );
 };

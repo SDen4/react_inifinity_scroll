@@ -1,23 +1,32 @@
-import React from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { Button } from 'components/ui/Button';
 
-import { rndData } from 'store/main/reducers';
+import { searchUsersSaga } from 'store/main/actions';
 
 import styles from './styles.css';
 
 export const Search = () => {
   const dispatch = useDispatch();
 
+  const [value, setValue] = useState('');
+
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (!event) {
+      return;
+    }
+
+    setValue(event.target.value);
+  };
+
   const onButtonClick = () => {
-    const randomNum = Math.random();
-    dispatch(rndData(randomNum));
+    dispatch(searchUsersSaga(value));
   };
 
   return (
     <div>
-      <input className={styles.input} />
+      <input className={styles.input} onChange={onChange} />
 
       <Button
         type="button"

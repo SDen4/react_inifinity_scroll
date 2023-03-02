@@ -7,7 +7,7 @@ export async function httpRequest(
   let status = null;
 
   const allData = await fetch(
-    `https://api.github.com/${path}`,
+    `https://api.github.com/search/users?q=${path.trim()}&per_page=30`,
     params && postObject(params),
   ).then((res) => {
     status = res.status;

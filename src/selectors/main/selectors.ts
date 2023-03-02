@@ -2,9 +2,9 @@ import { createSelector } from '@reduxjs/toolkit';
 
 import { AppStateType } from 'store/rootReducer';
 
-export const initDataSelect = createSelector(
-  (store: AppStateType) => store.main.initData,
-  (initData) => initData,
+export const usersListSelect = createSelector(
+  (store: AppStateType) => store.main.usersList,
+  (usersList) => usersList,
 );
 
 export const rndDataSelect = createSelector(
