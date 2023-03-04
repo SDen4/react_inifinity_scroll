@@ -56,7 +56,7 @@
     "react/jsx-props-no-spreading": "off",
     "react/jsx-wrap-multilines": "off",
     "comma-dangle": [ "error", "always-multiline" ],
-    "curly": ["error","all"],
+    "curly": [0,"multi"],
     "no-mixed-operators": "error",
     "camelcase": "off",
     "no-console": "warn",

@@ -12,7 +12,7 @@ export const Card: FC<IProps> = ({ card }) => {
   return (
     <div className={styles.card}>
       <div className={styles.imgWrapper}>
-        <img src={card.avatar_url} className={styles.img} />
+        <img src={card.avatar_url} className={styles.img} loading="lazy" />
       </div>
       <h3 className={styles.title}>
         <a

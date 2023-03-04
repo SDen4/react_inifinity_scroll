@@ -13,9 +13,7 @@ export async function httpRequest(
     return res.json();
   });
 
-  if (status !== 200) {
-    throw new Error('Request error!');
-  }
+  if (status !== 200) throw new Error('Request error!');
 
   return allData;
 }

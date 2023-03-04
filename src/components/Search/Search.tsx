@@ -13,9 +13,7 @@ export const Search = () => {
   const [value, setValue] = useState('');
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-    if (!event) {
-      return;
-    }
+    if (!event) return;
 
     setValue(event.target.value);
   };
@@ -24,8 +22,14 @@ export const Search = () => {
     dispatch(searchUsersSaga(value));
   };
 
+  const onSubmit = (event: ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    onButtonClick();
+  };
+
   return (
-    <div>
+    <form onSubmit={onSubmit}>
       <input className={styles.input} onChange={onChange} />
 
       <Button
@@ -34,6 +38,6 @@ export const Search = () => {
         title="Find repos on GitHub by username"
         onClick={onButtonClick}
       />
-    </div>
+    </form>
   );
 };
