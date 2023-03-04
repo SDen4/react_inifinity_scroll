@@ -4,13 +4,13 @@ import { ItemType } from 'model/types';
 
 export interface IInitialState {
   usersList: ItemType[];
-  rndData: number | null;
+  user: string;
   loading: boolean;
 }
 
 const initialState = {
   usersList: [],
-  rndData: null,
+  user: '',
   loading: false,
 } as IInitialState;
 
@@ -21,8 +21,8 @@ const mainReducer = createSlice({
     usersList(state, action: PayloadAction<ItemType[]>) {
       return { ...state, usersList: action.payload };
     },
-    rndData(state, action: PayloadAction<number>) {
-      return { ...state, rndData: action.payload };
+    user(state, action: PayloadAction<string>) {
+      return { ...state, user: action.payload };
     },
     loading(state, action: PayloadAction<boolean>) {
       return { ...state, loading: action.payload };
@@ -33,5 +33,5 @@ const mainReducer = createSlice({
   },
 });
 
-export const { usersList, rndData, loading, reset } = mainReducer.actions;
+export const { usersList, user, loading, reset } = mainReducer.actions;
 export default mainReducer.reducer;

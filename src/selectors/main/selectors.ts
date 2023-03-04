@@ -7,9 +7,9 @@ export const usersListSelect = createSelector(
   (usersList) => usersList,
 );
 
-export const rndDataSelect = createSelector(
-  (store: AppStateType) => store.main.rndData,
-  (rndData) => rndData,
+export const userSelect = createSelector(
+  (store: AppStateType) => store.main.user,
+  (user) => user,
 );
 
 export const loadingSelect = createSelector(

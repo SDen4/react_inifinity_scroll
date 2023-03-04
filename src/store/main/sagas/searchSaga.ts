@@ -3,7 +3,7 @@ import { put, takeEvery } from 'redux-saga/effects';
 
 import { searchUsersSaga } from '../actions';
 
-import { loading, usersList } from '../reducers';
+import { loading, user, usersList } from '../reducers';
 
 import { httpRequest } from 'api/httpRequest';
 
@@ -12,6 +12,8 @@ import { AllDataType } from 'model/types';
 function* searchUsers({ payload }: ReturnType<typeof searchUsersSaga>) {
   yield put(loading(true));
   try {
+    yield put(user(payload));
+
     const allData: AllDataType = yield httpRequest(payload);
 
     yield put(usersList(allData?.items));
