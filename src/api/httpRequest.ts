@@ -1,14 +1,12 @@
-import { postObject } from 'utils/postObject';
-
 export async function httpRequest(
   path: string,
-  params?: { [key: string]: string | number },
+  page?: number,
 ): Promise<unknown> {
+  const p = page ? `&page=${page}` : '';
   let status = null;
 
   const allData = await fetch(
-    `https://api.github.com/search/users?q=${path.trim()}&per_page=30`,
-    params && postObject(params),
+    `https://api.github.com/search/users?q=${path.trim()}&per_page=30${p}`,
   ).then((res) => {
     status = res.status;
 
