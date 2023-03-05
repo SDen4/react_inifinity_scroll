@@ -21,3 +21,8 @@ export const pageSelect = createSelector(
   (store: AppStateType) => store.main.page,
   (page) => page,
 );
+
+export const endOfUsersListSelect = createSelector(
+  (store: AppStateType) => store.main.endOfUsersList,
+  (endOfUsersList) => endOfUsersList,
+);

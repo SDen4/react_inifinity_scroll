@@ -3,13 +3,15 @@ import { put, select, takeEvery } from 'redux-saga/effects';
 
 import { scrollSaga } from '../actions';
 
-import { loading, page, usersList } from '../reducers';
+import { endOfUsersList, loading, page, usersList } from '../reducers';
 
 import { pageSelect, userSelect, usersListSelect } from 'selectors/main';
 
 import { httpRequest } from 'api/httpRequest';
 
 import { AllDataType, ItemType } from 'model/types';
+
+import { usersPerRequest } from 'constants/index';
 
 function* scrollWorker() {
   const user: string = yield select(userSelect);
@@ -22,7 +24,12 @@ function* scrollWorker() {
     const allData: AllDataType = yield httpRequest(user, pageStore);
 
     yield put(usersList([...usersListStore, ...allData.items]));
-    yield put(page(pageStore + 1));
+
+    if (allData.items.length < usersPerRequest) {
+      yield put(endOfUsersList(true));
+    } else {
+      yield put(page(pageStore + 1));
+    }
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);

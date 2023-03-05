@@ -16,7 +16,7 @@ import { Search } from 'components/Search';
 
 import { scrollSaga } from 'store/main/actions';
 
-import { loadingSelect } from 'selectors/main';
+import { endOfUsersListSelect, loadingSelect } from 'selectors/main';
 
 import styles from './styles.css';
 
@@ -25,6 +25,7 @@ export const App: FC = () => {
   const ref: RefObject<HTMLDivElement> = useRef(null);
 
   const loadingStore = useSelector(loadingSelect);
+  const endOfUsersList = useSelector(endOfUsersListSelect);
 
   const [initHeight, setInitHeight] = useState<number | undefined>(0);
 
@@ -36,11 +37,12 @@ export const App: FC = () => {
     if (
       Number(ref?.current?.clientHeight) - window.scrollY - 121 <=
         Number(initHeight) &&
-      !loadingStore
+      !loadingStore &&
+      !endOfUsersList
     ) {
       dispatch(scrollSaga());
     }
-  }, [dispatch, initHeight, loadingStore]);
+  }, [dispatch, endOfUsersList, initHeight, loadingStore]);
 
   useEffect(() => {
     document.addEventListener('scroll', scrollFunc);

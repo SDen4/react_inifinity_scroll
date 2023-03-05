@@ -1,3 +1,5 @@
+import { usersPerRequest as q } from 'constants/index';
+
 export async function httpRequest(
   user: string,
   page?: number,
@@ -6,7 +8,7 @@ export async function httpRequest(
   let status = null;
 
   const allData = await fetch(
-    `https://api.github.com/search/users?q=${user.trim()}&per_page=50${p}`,
+    `https://api.github.com/search/users?q=${user.trim()}&per_page=${q}${p}`,
   ).then((res) => {
     status = res.status;
 
