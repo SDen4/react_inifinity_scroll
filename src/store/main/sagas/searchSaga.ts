@@ -1,26 +1,31 @@
 import { SagaIterator } from 'redux-saga';
 import { put, takeEvery } from 'redux-saga/effects';
 
-import { searchUsersSaga } from '../actions';
-import { loadingAct, userAct, usersListAct } from '../reducer';
+import { searchUsersSaga } from 'store/main/actions';
+import { userAct, usersListAct } from 'store/main/reducer';
+import { endOfUsersListAct, resetAct } from 'store/scroll/reducer';
 
 import { httpRequest } from 'api/httpRequest';
 
 import { AllDataType } from 'model/types';
 
+import { usersPerRequest } from 'constants/index';
+
 function* searchUsersWorker({ payload }: ReturnType<typeof searchUsersSaga>) {
-  yield put(loadingAct(true));
   try {
+    yield put(resetAct());
     yield put(userAct(payload));
 
     const allData: AllDataType = yield httpRequest(payload);
+
+    if (allData.items.length < usersPerRequest) {
+      yield put(endOfUsersListAct(true));
+    }
 
     yield put(usersListAct(allData?.items));
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);
-  } finally {
-    yield put(loadingAct(false));
   }
 }
 

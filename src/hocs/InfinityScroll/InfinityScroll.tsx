@@ -8,9 +8,9 @@ import React, {
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { scrollSaga } from 'store/main/actions';
+import { scrollSaga } from 'store/scroll/actions';
 
-import { endOfUsersListSelect, loadingSelect } from 'selectors/main';
+import { endOfUsersListSelect, loadingSelect } from 'selectors/scroll';
 
 export const InfinityScroll = (Comp: typeof React.Component) => {
   const dispatch = useDispatch();

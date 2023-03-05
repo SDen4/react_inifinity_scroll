@@ -1,9 +1,7 @@
 import { createAction } from '@reduxjs/toolkit';
 
-const main = 'MAIN';
+const prefix = 'MAIN';
 
 export const searchUsersSaga = createAction<string>(
-  `${main}/SEARCH_USERS_SAGA`,
+  `${prefix}/SEARCH_USERS_SAGA`,
 );
-
-export const scrollSaga = createAction(`${main}/SCROLL_SAGA`);

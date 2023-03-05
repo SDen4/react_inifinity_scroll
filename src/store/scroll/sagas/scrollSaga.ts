@@ -1,15 +1,12 @@
 import { SagaIterator } from 'redux-saga';
 import { put, select, takeEvery } from 'redux-saga/effects';
 
-import { scrollSaga } from '../actions';
-import {
-  endOfUsersListAct,
-  loadingAct,
-  pageAct,
-  usersListAct,
-} from '../reducer';
+import { usersListAct } from 'store/main/reducer';
+import { scrollSaga } from 'store/scroll/actions';
+import { endOfUsersListAct, loadingAct, pageAct } from 'store/scroll/reducer';
 
-import { pageSelect, userSelect, usersListSelect } from 'selectors/main';
+import { userSelect, usersListSelect } from 'selectors/main';
+import { pageSelect } from 'selectors/scroll';
 
 import { httpRequest } from 'api/httpRequest';
 
