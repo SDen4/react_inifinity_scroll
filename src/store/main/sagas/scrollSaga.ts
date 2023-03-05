@@ -2,8 +2,12 @@ import { SagaIterator } from 'redux-saga';
 import { put, select, takeEvery } from 'redux-saga/effects';
 
 import { scrollSaga } from '../actions';
-
-import { endOfUsersList, loading, page, usersList } from '../reducers';
+import {
+  endOfUsersListAct,
+  loadingAct,
+  pageAct,
+  usersListAct,
+} from '../reducer';
 
 import { pageSelect, userSelect, usersListSelect } from 'selectors/main';
 
@@ -15,26 +19,26 @@ import { usersPerRequest } from 'constants/index';
 
 function* scrollWorker() {
   const user: string = yield select(userSelect);
-  const pageStore: number = yield select(pageSelect);
-  const usersListStore: ItemType[] = yield select(usersListSelect);
+  const page: number = yield select(pageSelect);
+  const usersList: ItemType[] = yield select(usersListSelect);
 
-  yield put(loading(true));
+  yield put(loadingAct(true));
 
   try {
-    const allData: AllDataType = yield httpRequest(user, pageStore);
+    const allData: AllDataType = yield httpRequest(user, page);
 
-    yield put(usersList([...usersListStore, ...allData.items]));
+    yield put(usersListAct([...usersList, ...allData.items]));
 
     if (allData.items.length < usersPerRequest) {
-      yield put(endOfUsersList(true));
+      yield put(endOfUsersListAct(true));
     } else {
-      yield put(page(pageStore + 1));
+      yield put(pageAct(page + 1));
     }
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);
   } finally {
-    yield put(loading(false));
+    yield put(loadingAct(false));
   }
 }
 

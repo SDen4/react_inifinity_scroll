@@ -15,6 +15,7 @@ import { Result } from 'components/Result';
 import { Search } from 'components/Search';
 
 import { scrollSaga } from 'store/main/actions';
+import { resetAct } from 'store/main/reducer';
 
 import { endOfUsersListSelect, loadingSelect } from 'selectors/main';
 
@@ -49,6 +50,12 @@ export const App: FC = () => {
 
     return () => document.removeEventListener('scroll', scrollFunc);
   }, [loadingStore, scrollFunc]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetAct());
+    };
+  }, [dispatch]);
 
   return (
     <main className={styles.main} ref={ref}>

@@ -18,31 +18,38 @@ const initialState = {
   endOfUsersList: false,
 } as IInitialState;
 
-const mainReducer = createSlice({
-  name: 'MReducer',
+const mainSlice = createSlice({
+  name: 'MAIN',
   initialState,
   reducers: {
-    usersList(state, action: PayloadAction<ItemType[]>) {
+    usersListAct(state, action: PayloadAction<ItemType[]>) {
       return { ...state, usersList: action.payload };
     },
-    user(state, action: PayloadAction<string>) {
+    userAct(state, action: PayloadAction<string>) {
       return { ...state, user: action.payload };
     },
-    loading(state, action: PayloadAction<boolean>) {
+    loadingAct(state, action: PayloadAction<boolean>) {
       return { ...state, loading: action.payload };
     },
-    page(state, action: PayloadAction<number>) {
+    pageAct(state, action: PayloadAction<number>) {
       return { ...state, page: action.payload };
     },
-    endOfUsersList(state, action: PayloadAction<boolean>) {
+    endOfUsersListAct(state, action: PayloadAction<boolean>) {
       return { ...state, endOfUsersList: action.payload };
     },
-    reset() {
+    resetAct() {
       return initialState;
     },
   },
 });
 
-export const { usersList, user, loading, page, endOfUsersList, reset } =
-  mainReducer.actions;
-export default mainReducer.reducer;
+export const {
+  usersListAct,
+  userAct,
+  loadingAct,
+  pageAct,
+  endOfUsersListAct,
+  resetAct,
+} = mainSlice.actions;
+const mainReducer = mainSlice.reducer;
+export { mainReducer };

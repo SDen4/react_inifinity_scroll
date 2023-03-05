@@ -1,6 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-import mainReducer from 'store/main/reducers/reducer';
+import { mainReducer } from 'store/main/reducer';
 
 export const rootReducer = combineReducers({
   main: mainReducer,
