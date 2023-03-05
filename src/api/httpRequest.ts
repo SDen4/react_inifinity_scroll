@@ -6,7 +6,7 @@ export async function httpRequest(
   let status = null;
 
   const allData = await fetch(
-    `https://api.github.com/search/users?q=${user.trim()}&per_page=30${p}`,
+    `https://api.github.com/search/users?q=${user.trim()}&per_page=50${p}`,
   ).then((res) => {
     status = res.status;
 

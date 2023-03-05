@@ -17,7 +17,7 @@ export const Result: FC = () => {
           ))}
         </div>
       ) : (
-        <p>No data to dispay...</p>
+        <p style={{ color: '#fff' }}>No data to dispay...</p>
       )}
     </>
   );

@@ -16,3 +16,8 @@ export const loadingSelect = createSelector(
   (store: AppStateType) => store.main.loading,
   (loading) => loading,
 );
+
+export const pageSelect = createSelector(
+  (store: AppStateType) => store.main.page,
+  (page) => page,
+);

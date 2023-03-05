@@ -6,12 +6,14 @@ export interface IInitialState {
   usersList: ItemType[];
   user: string;
   loading: boolean;
+  page: number;
 }
 
 const initialState = {
   usersList: [],
   user: '',
   loading: false,
+  page: 2,
 } as IInitialState;
 
 const mainReducer = createSlice({
@@ -27,11 +29,14 @@ const mainReducer = createSlice({
     loading(state, action: PayloadAction<boolean>) {
       return { ...state, loading: action.payload };
     },
+    page(state, action: PayloadAction<number>) {
+      return { ...state, page: action.payload };
+    },
     reset() {
       return initialState;
     },
   },
 });
 
-export const { usersList, user, loading, reset } = mainReducer.actions;
+export const { usersList, user, loading, page, reset } = mainReducer.actions;
 export default mainReducer.reducer;

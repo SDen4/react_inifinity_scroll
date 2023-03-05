@@ -9,7 +9,7 @@ import { httpRequest } from 'api/httpRequest';
 
 import { AllDataType } from 'model/types';
 
-function* searchUsers({ payload }: ReturnType<typeof searchUsersSaga>) {
+function* searchUsersWorker({ payload }: ReturnType<typeof searchUsersSaga>) {
   yield put(loading(true));
   try {
     yield put(user(payload));
@@ -26,5 +26,5 @@ function* searchUsers({ payload }: ReturnType<typeof searchUsersSaga>) {
 }
 
 export function* rootSearchSaga(): SagaIterator {
-  [yield takeEvery(searchUsersSaga, searchUsers)];
+  [yield takeEvery(searchUsersSaga, searchUsersWorker)];
 }

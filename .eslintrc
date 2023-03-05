@@ -9,7 +9,8 @@
     "react",
     "@typescript-eslint",
     "simple-import-sort",
-    "import"
+    "import",
+    "react-hooks"
   ],
   "extends": [
     "eslint:recommended",
@@ -37,6 +38,7 @@
     "function-paren-newline": "off",
     "react/state-in-constructor": "off",
     "react/jsx-filename-extension": [ 1, { "extensions": [".js",".jsx",".tsx"] }],
+    "react-hooks/exhaustive-deps": "warn",
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/no-var-requires": "error",
     "@typescript-eslint/explicit-function-return-type": "off",
