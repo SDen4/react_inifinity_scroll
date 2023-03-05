@@ -1,4 +1,10 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, {
+  ChangeEvent,
+  RefObject,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useDispatch } from 'react-redux';
 
 import { Button } from 'components/ui/Button';
@@ -9,6 +15,11 @@ import styles from './styles.css';
 
 export const Search = () => {
   const dispatch = useDispatch();
+  const ref: RefObject<HTMLInputElement> = useRef(null);
+
+  useEffect(() => {
+    ref?.current?.focus();
+  }, []);
 
   const [value, setValue] = useState('');
 
@@ -30,7 +41,7 @@ export const Search = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <input className={styles.input} onChange={onChange} />
+      <input className={styles.input} onChange={onChange} ref={ref} />
 
       <Button
         type="button"
