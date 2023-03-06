@@ -27,7 +27,7 @@ export const InfinityScroll = (Comp: typeof React.Component) => {
 
   const scrollFunc = useCallback(() => {
     if (
-      Number(ref?.current?.clientHeight) - window.scrollY - 121 <=
+      (Number(ref?.current?.clientHeight) - window.scrollY) * 0.5 <=
         Number(initHeight) &&
       !loadingStore &&
       !endOfUsersList
