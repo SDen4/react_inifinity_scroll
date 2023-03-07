@@ -9,9 +9,8 @@ interface IProps extends HTMLAttributes<HTMLButtonElement> {
 
 export const Button: FC<IProps> = ({ type, text, ...props }) => {
   return (
-    <button type={type} {...props} className={styles.button}>
+    <button type={type} className={styles.button} {...props}>
       {text}
     </button>
   );
 };
-
