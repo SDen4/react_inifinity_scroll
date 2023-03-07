@@ -19,6 +19,8 @@ export const Search = () => {
   };
 
   const onButtonClick = () => {
+    if (!value.length) return;
+
     dispatch(searchUsersSaga(value));
   };
 
