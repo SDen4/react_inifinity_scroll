@@ -32,7 +32,11 @@ export const Search = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <input className={styles.input} onChange={onChange} />
+      <input
+        className={styles.input}
+        onChange={onChange}
+        placeholder="Type github user"
+      />
 
       <Button
         type="button"
