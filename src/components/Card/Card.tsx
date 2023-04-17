@@ -1,6 +1,7 @@
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
 
-import { ItemType } from 'model/types';
+import type { ItemType } from 'model/types';
 
 import styles from './styles.css';
 

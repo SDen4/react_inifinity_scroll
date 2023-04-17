@@ -46,10 +46,13 @@
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/interface-name-prefix": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
-    "no-use-before-define": "off",
+    "@typescript-eslint/consistent-type-imports": [
+      "warn", {"prefer": "type-imports"}
+    ],
     "@typescript-eslint/no-use-before-define": ["error"],
     "@typescript-eslint/unbound-method": "off",
     "@typescript-eslint/ban-ts-comment": "off",
+    "no-use-before-define": "off",
     "max-classes-per-file": "off",
     "prefer-const": "off",
     "arrow-parens": "off",

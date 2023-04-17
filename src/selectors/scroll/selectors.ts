@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-import { AppStateType } from 'store/rootReducer';
+import type { AppStateType } from 'store/rootReducer';
 
 export const loadingSelect = createSelector(
   (store: AppStateType) => store.scroll.loading,

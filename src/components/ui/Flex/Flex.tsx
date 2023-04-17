@@ -1,4 +1,5 @@
-import React, { FC, HTMLAttributes, memo, PropsWithChildren } from 'react';
+import type { FC, HTMLAttributes, PropsWithChildren } from 'react';
+import React, { memo } from 'react';
 
 import classes from './styles.css';
 

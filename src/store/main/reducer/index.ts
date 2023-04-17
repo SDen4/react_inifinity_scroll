@@ -1,6 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-import { ItemType } from 'model/types';
+import type { ItemType } from 'model/types';
 
 export interface IInitialState {
   usersList: ItemType[];

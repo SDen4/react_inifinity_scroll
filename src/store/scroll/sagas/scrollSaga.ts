@@ -1,4 +1,4 @@
-import { SagaIterator } from 'redux-saga';
+import type { SagaIterator } from 'redux-saga';
 import { put, select, takeEvery } from 'redux-saga/effects';
 
 import { usersListAct } from 'store/main/reducer';
@@ -10,7 +10,7 @@ import { pageSelect } from 'selectors/scroll';
 
 import { httpRequest } from 'api/httpRequest';
 
-import { AllDataType, ItemType } from 'model/types';
+import type { AllDataType, ItemType } from 'model/types';
 
 import { usersPerRequest } from 'constants/index';
 

@@ -1,4 +1,4 @@
-import { SagaIterator } from 'redux-saga';
+import type { SagaIterator } from 'redux-saga';
 import { put, takeEvery } from 'redux-saga/effects';
 
 import { searchUsersSaga } from 'store/main/actions';
@@ -7,7 +7,7 @@ import { endOfUsersListAct, resetAct } from 'store/scroll/reducer';
 
 import { httpRequest } from 'api/httpRequest';
 
-import { AllDataType } from 'model/types';
+import type { AllDataType } from 'model/types';
 
 import { usersPerRequest } from 'constants/index';
 
